@@ -3,6 +3,7 @@ const bank = {
     'savings': 0,
     'checking': 0
   },
+
   render: function () {
     $('#checking-balance').text('$' + this.accounts['checking']);
     $('#savings-balance').text('$' + this.accounts['savings']);
@@ -16,10 +17,12 @@ const bank = {
       $('#checking-balance').addClass('zero');
     }
   },
+
   deposit: function ( account, amount ) {
     this.accounts[account] += amount;
     this.render();
   },
+
   withdraw: function ( account, amount ) {
     let second_account = ( account === 'savings') ? 'checking' : 'savings';
     let currentBalance = this.accounts[account];
@@ -28,7 +31,7 @@ const bank = {
       let available_balance = currentBalance + second_balance;
       if( amount < available_balance ) {
         this.accounts[account] = 0;
-        this.accounts[second_account] = available_balance - amount;
+        this.accounts[second_account] = available_balance - amount; // second_balance - (amount-currentBalance)
       }
     } else {
       currentBalance -= amount;
