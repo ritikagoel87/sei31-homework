@@ -39,47 +39,50 @@ const journey = function ( lineA, stopA, lineB, stopB ) {
   const output = [];
   let journeyLength = 0;
   for (let i = 0; i < subway.length; i++) {
-    if ( lineA === subway[i].line) {
+    if ( lineA === subway[i].line) {        // finding the index of source line
       lineAIndex = i;
     }
     if ( lineA !== lineB ) {
       if ( lineB === subway[i].line) {
-        lineBIndex = i;
+        lineBIndex = i;                     // finding the index of destination line
       }
     }
   }
-  const aUnion = subway[lineAIndex].stops.indexOf('Union Square');
-  const aIndex = subway[lineAIndex].stops.indexOf(stopA);
-  if ( lineA !== lineB ) {
-    const bUnion = subway[lineBIndex].stops.indexOf('Union Square');
-    const bIndex = subway[lineBIndex].stops.indexOf(stopB);
-    if ( bUnion > bIndex ) {
+  const aUnion = subway[lineAIndex].stops.indexOf('Union Square');  // Index of Union Square on source line
+  const aIndex = subway[lineAIndex].stops.indexOf(stopA);           // Index of source station on source line
+
+  if ( lineA !== lineB ) {                                   // checking if the source line is different from the destinationline
+
+    const bUnion = subway[lineBIndex].stops.indexOf('Union Square'); // Index of Union Square on destination line
+    const bIndex = subway[lineBIndex].stops.indexOf(stopB);         // Index of destination station on source line
+
+    if ( bUnion > bIndex ) {                            // if stop comes before Union
       for (let i = bUnion - 1; i >= bIndex; i--) {
         resultB.push(subway[lineBIndex].stops[i]);
       }
-    } else {
+    } else {                                            // if stop comes after Union
       for (let i = bIndex - 1; i >= bUnion; i--) {
         resultB.push(subway[lineBIndex].stops[i]);
       }
     }
-    if ( aUnion > aIndex ) {
+    if ( aUnion > aIndex ) {                            // if stop comes before Union
       for (let i = aIndex; i <= aUnion; i++) {
         resultA.push(subway[lineAIndex].stops[i]);
       }
-    } else {
+    } else {                                            // if stop comes after Union
       for (let i = aUnion; i <= aIndex; i++) {
         resultA.push(subway[lineAIndex].stops[i]);
       }
     }
     journeyLength = resultA.length + resultB.length;
-  } else {
+  } else {                                              // if the source and destination are on the same line
       const aUnion = subway[lineAIndex].stops.indexOf(stopB);
       if ( aUnion > aIndex ) {
-        for (let i = aIndex; i < aUnion; i++) {
+        for (let i = aIndex; i <= aUnion; i++) {
           resultA.push(subway[lineAIndex].stops[i]);
         }
       } else {
-        for (let i = aUnion; i < aIndex; i++) {
+        for (let i = aUnion; i <= aIndex; i++) {
           resultA.push(subway[lineAIndex].stops[i]);
         }
       }
