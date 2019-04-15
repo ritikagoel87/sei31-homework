@@ -1,0 +1,11 @@
+<h1>Result</h1>
+
+<p>You chose: <%= @throw.capitalize %></p>
+<p>AI chose: <%= @ai.capitalize %></p>
+<% if @win == 1 %>
+<p>You won!</p>
+<% elsif @win == 0 %>
+<p>AI won!</p>
+<% else %>
+<p>It's a draw!</p>
+<% end %>
