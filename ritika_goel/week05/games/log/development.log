@@ -2065,3 +2065,24 @@ Processing by RockController#home as HTML
 Completed 200 OK in 62ms (Views: 55.9ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/magic" for ::1 at 2019-04-16 09:08:12 +1000
+Processing by MagicController#home as HTML
+  Rendering magic/home.html.erb within layouts/application
+  Rendered magic/home.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 250ms (Views: 243.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/magic" for ::1 at 2019-04-16 09:08:45 +1000
+Processing by MagicController#home as HTML
+  Rendering magic/home.html.erb within layouts/application
+  Rendered magic/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/magic" for ::1 at 2019-04-16 09:08:59 +1000
+Processing by MagicController#home as HTML
+  Rendering magic/home.html.erb within layouts/application
+  Rendered magic/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
